@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>弹性导航</title>
+<style>
+*{margin:0; padding:0;}
+#ul1{ position: relative; width:505px; height:41px; line-height: 53px; padding-top:12px; background: #ccc; margin:100px auto;  border-radius: 10px;}
+#ul1 li{ float:left; width:100px; height:30px; line-height: 30px; text-align: center; color:#fff; list-style-type: none; border-left:1px solid #008080; font-family: "Microsoft YaHei"; cursor:pointer; position: relative; z-index: 2;}
+#ul1 .li1{border-left:none;}
+#ul1 .box{ position: absolute; left:0; top:0; width:100px; height:52px; border:none; background: #0080FF; opacity: 0.3; filter:alpha(opacity:30); border-radius: 10px; z-index: 1;}
+</style>
+</head>
+<body>
+	<ul id="ul1">
+		<li class="li1">首页</li>
+		<li>技能</li>
+		<li>作品</li>
+		<li>效果</li>
+		<li>联系我</li>
+		<li class="box"></li>
+	</ul>
+	<script src="../Slidingnav.js"></script>
+	<script type="text/javascript">
+		Slidingnav('ul1')
+	</script>
+</body>
+</html>
