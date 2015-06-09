@@ -4,10 +4,19 @@
 var Slidingnav;
 (function(){
  	'use strict';
- 	Slidingnav = function(id){
-	 	var oUl = document.getElementById(id);
+ 	Slidingnav = function(options){
+ 		var options = options || {};
+ 		options.id = options.id;
+ 		if(!options.id){
+ 			console.error('Uncaught TypeError: Missing ID attribute');
+ 			return;
+ 		}
+ 		options.speed = options.speed || 0.75;
+ 		options.time = options.time || 30;
+	 	var oUl = document.getElementById(options.id);
 		var aLi = oUl.children;
 		var oBox = oUl.children[aLi.length-1];
+
 		for(var i = 0; i < aLi.length-1; i++){
 			aLi[i].onmouseover = function(){
 				startMove(oBox,this.offsetLeft)
@@ -24,14 +33,14 @@ var Slidingnav;
 			clearInterval(timer);	
 			timer = setInterval(function(){
 				speed+= (iTarget-obj.offsetLeft)/5;
-				speed*=0.75;
+				speed*=options.speed;
 
 				left+=speed;
 				obj.style.left = Math.round(left) + 'px';
 				if(Math.round(speed) == 0 && Math.round(left) ==iTarget){
 					clearInterval(timer);
 				}
-			},30);	
+			},options.time);	
 		}
 	} 
  })();
